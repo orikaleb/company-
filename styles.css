@@ -920,9 +920,17 @@ h4 {
 /* ===================================
    RESPONSIVE
    =================================== */
-@media (max-width: 1024px) {
 
-  .pillars__grid,
+/* Tablet and below - 1024px */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 calc(var(--spacing-unit) * 3);
+  }
+
+  .pillars__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .portfolio__grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -944,7 +952,18 @@ h4 {
   }
 }
 
+/* Small tablet and below - 768px */
 @media (max-width: 768px) {
+  .container {
+    padding: 0 calc(var(--spacing-unit) * 2);
+  }
+
+  /* Header & Navigation */
+  .menu-toggle {
+    display: block;
+    z-index: 101;
+  }
+
   .nav {
     position: fixed;
     top: 0;
@@ -952,21 +971,237 @@ h4 {
     right: 0;
     bottom: 0;
     background: rgba(12, 12, 12, 0.98);
+    backdrop-filter: blur(10px);
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 24px;
+    gap: calc(var(--spacing-unit) * 4);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s ease;
+    z-index: 100;
   }
 
-  /* ... existing media query styles ... */
+  .nav.active {
+    opacity: 1;
+    pointer-events: all;
+  }
 
+  .nav a {
+    font-size: 1.25rem;
+    color: var(--off-white);
+  }
+
+  /* Hero */
+  .hero {
+    padding: 100px 0 60px;
+    min-height: 80vh;
+  }
+
+  .hero__title {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+
+  /* About Section */
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: calc(var(--spacing-unit) * 6);
+  }
+
+  .about__sidebar {
+    padding-left: 0;
+    border-left: none;
+    padding-top: calc(var(--spacing-unit) * 4);
+    border-top: 1px solid var(--dark-grey);
+  }
+
+  /* Sections */
+  .section {
+    padding: calc(var(--spacing-unit) * 8) 0;
+    min-height: auto;
+  }
+
+  /* Contact Section */
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: calc(var(--spacing-unit) * 6);
+  }
+
+  /* Philosophy */
+  .philosophy__values {
+    gap: calc(var(--spacing-unit) * 3);
+    flex-wrap: wrap;
+  }
+
+  /* Footer */
   .footer__inner {
     flex-direction: column;
     text-align: center;
     gap: calc(var(--spacing-unit) * 3);
+  }
+
+  .footer__links {
+    justify-content: center;
+  }
+}
+
+/* Mobile - 480px and below */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 calc(var(--spacing-unit) * 2);
+  }
+
+  /* Hero */
+  .hero {
+    padding: 80px 0 40px;
+  }
+
+  .hero__title {
+    font-size: clamp(2rem, 12vw, 3rem);
+    margin-bottom: calc(var(--spacing-unit) * 3);
+  }
+
+  .hero__label {
+    font-size: 0.625rem;
+    margin-bottom: calc(var(--spacing-unit) * 2);
+  }
+
+  .hero__tagline {
+    font-size: 0.75rem;
+  }
+
+  /* Sections */
+  .section {
+    padding: calc(var(--spacing-unit) * 6) 0;
+  }
+
+  .section__title {
+    font-size: clamp(1.5rem, 8vw, 2rem);
+    margin-bottom: calc(var(--spacing-unit) * 3);
+  }
+
+  /* Pillars */
+  .pillars__grid {
+    grid-template-columns: 1fr;
+    gap: 1px;
+  }
+
+  .pillar {
+    padding: calc(var(--spacing-unit) * 4);
+  }
+
+  .pillar__num {
+    font-size: 1.5rem;
+  }
+
+  /* Portfolio */
+  .portfolio__grid {
+    grid-template-columns: 1fr;
+    gap: calc(var(--spacing-unit) * 2);
+  }
+
+  .portfolio__item {
+    padding: calc(var(--spacing-unit) * 4);
+    min-height: 180px;
+  }
+
+  .portfolio__icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: calc(var(--spacing-unit) * 3);
+  }
+
+  .portfolio__name {
+    font-size: 1rem;
+    margin-bottom: calc(var(--spacing-unit) * 1);
+  }
+
+  .portfolio__status {
+    font-size: 0.875rem;
+  }
+
+  /* Board */
+  .board__grid {
+    grid-template-columns: 1fr;
+    gap: calc(var(--spacing-unit) * 2);
+  }
+
+  .board__member {
+    padding: calc(var(--spacing-unit) * 2.5);
+  }
+
+  /* Timeline */
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .timeline__item {
+    padding: calc(var(--spacing-unit) * 2.5) 0 calc(var(--spacing-unit) * 2.5) calc(var(--spacing-unit) * 2);
+  }
+
+  .timeline__year {
+    font-size: 1.5rem;
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+  }
+
+  /* News */
+  .news__grid {
+    grid-template-columns: 1fr;
+    gap: calc(var(--spacing-unit) * 2);
+  }
+
+  .news__item {
+    padding: calc(var(--spacing-unit) * 3);
+  }
+
+  /* Contact Form */
+  .form__submit {
+    width: 100%;
+    align-self: stretch;
+    justify-content: center;
+  }
+
+  /* Philosophy */
+  .philosophy__quote {
+    font-size: 1.25rem;
+    margin-bottom: calc(var(--spacing-unit) * 4);
+  }
+
+  .philosophy__values {
+    flex-direction: column;
+    gap: calc(var(--spacing-unit) * 2);
+    align-items: center;
+  }
+
+  /* About */
+  .about__text {
+    font-size: 1rem;
+  }
+
+  .about__quote {
+    font-size: 1.25rem;
+  }
+
+  /* Video */
+  .video__play-btn {
+    width: 60px;
+    height: 60px;
+  }
+
+  .video__play-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Footer */
+  .footer {
+    padding: calc(var(--spacing-unit) * 4) 0;
+  }
+
+  .footer__links {
+    flex-direction: column;
+    gap: calc(var(--spacing-unit) * 2);
   }
 }
 
