@@ -402,13 +402,13 @@ h4 {
 .pillar__num {
   font-family: var(--font-heading);
   font-size: 2rem;
-  color: var(--dark-grey);
+  color: var(--gold);
   margin-bottom: calc(var(--spacing-unit) * 2);
   transition: color 0.3s;
 }
 
 .pillar:hover .pillar__num {
-  color: var(--gold-dim);
+  color: var(--gold-light);
 }
 
 .pillar__title {
