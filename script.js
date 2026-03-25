@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
-    const lines = document.querySelectorAll('.philosophy__line');
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -41,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     reveals.forEach(el => observer.observe(el));
-    lines.forEach(el => observer.observe(el));
 
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

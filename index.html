@@ -15,13 +15,20 @@
 <body>
 
     <header class="header" id="header">
-        <div class="container header__inner">
-            <a href="#" class="logo">Eliud</a>
+        <div class="header__inner">
+            <a href="#" class="logo" aria-label="Eliud Holdings">
+                <svg class="logo__mark" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect fill="#0c0c0c" width="32" height="32" />
+                    <text x="50%" y="70%" text-anchor="middle" font-family="Georgia" font-size="20" fill="#a08c5b">E</text>
+                </svg>
+                <span class="logo__text">Eliud</span>
+            </a>
             <nav class="nav" id="nav">
                 <a href="#about">About</a>
                 <a href="#timeline">History</a>
                 <a href="#portfolio">Portfolio</a>
-                <a href="#board">Leadership</a>
+                <a href="#governance">Governance</a>
+                <a href="#leadership">Leadership</a>
                 <a href="#news">News</a>
                 <a href="#contact">Contact</a>
             </nav>
@@ -174,10 +181,11 @@
                 <div class="portfolio__item reveal reveal-delay-2">
                     <svg class="portfolio__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="1.5">
-                        <path d="M12 19V6" />
-                        <path d="M5 19h14" />
-                        <path d="M12 6a5 5 0 0 1 5 5" />
-                        <path d="M12 6a5 5 0 0 0-5 5" />
+                        <path d="M7.5 15.5c0 0 1.5-2 4.5-2s4.5 2 4.5 2" />
+                        <path d="M7.5 12c0 0 1.5-2 4.5-2s4.5 2 4.5 2" />
+                        <path d="M7.5 8.5c0 0 1.5-2 4.5-2s4.5 2 4.5 2" />
+                        <path d="M12 13.5v7.5" />
+                        <path d="M9 5.5C10 4 10.5 3 12 3c1.5 0 2 1 3 2.5" />
                     </svg>
                     <p class="portfolio__name">Agriculture</p>
                     <p class="portfolio__status">Coming Soon</p>
@@ -198,9 +206,9 @@
     </section>
 
     <!-- Board of Directors -->
-    <section class="section section--alt" id="board">
+    <section class="section section--alt" id="leadership">
         <div class="container">
-            <p class="section__label reveal">Governance</p>
+            <p class="section__label reveal">Leadership</p>
             <h2 class="section__title reveal">Board of Directors</h2>
             <div class="board__intro reveal">
                 <p>The Board oversees group strategy, approves capital allocation, and appoints subsidiary leadership.
@@ -259,6 +267,75 @@
         </div>
     </section>
 
+    <!-- Governance / Code of Conduct -->
+    <section class="section section--alt" id="governance">
+        <div class="container">
+            <p class="section__label reveal">Governance</p>
+            <h2 class="section__title reveal">Our Code<br>of Conduct</h2>
+            <p class="conduct__lede reveal">The principles that guide how we work, lead, and serve — across every sector,
+                every subsidiary, and every community we touch.</p>
+            <div class="conduct__intro">
+                <p class="reveal">At Eliud Holdings, we believe the way we do business matters as much as the results we
+                    achieve. This Code applies to every Director, employee, contractor, and partner who acts on our
+                    behalf.</p>
+            </div>
+            <div class="conduct__grid">
+                <article class="conduct__item reveal">
+                    <p class="conduct__num">01</p>
+                    <h3 class="conduct__title">Integrity &amp; Honest Dealing</h3>
+                    <p class="conduct__text">We act with honesty in every transaction and relationship. Bribery, corruption,
+                        and facilitation payments are strictly prohibited. We comply fully with Ghana's anti-corruption
+                        laws and applicable international standards.</p>
+                </article>
+                <article class="conduct__item reveal reveal-delay-1">
+                    <p class="conduct__num">02</p>
+                    <h3 class="conduct__title">Conflicts of Interest</h3>
+                    <p class="conduct__text">We disclose and proactively manage any situation where personal interests may
+                        conflict with those of the Company. No one may use their position at Eliud Holdings for personal
+                        gain at the Company's expense.</p>
+                </article>
+                <article class="conduct__item reveal reveal-delay-2">
+                    <p class="conduct__num">03</p>
+                    <h3 class="conduct__title">Confidentiality &amp; Data Protection</h3>
+                    <p class="conduct__text">We protect sensitive business information and personal data in compliance
+                        with Ghana's Data Protection Act, 2012 (Act 843). Confidentiality obligations survive the end of any
+                        employment or engagement.</p>
+                </article>
+                <article class="conduct__item reveal reveal-delay-3">
+                    <p class="conduct__num">04</p>
+                    <h3 class="conduct__title">Respect &amp; Human Dignity</h3>
+                    <p class="conduct__text">We are committed to equal opportunity and a workplace free from
+                        discrimination, harassment, and abuse. Child labour and forced labour are absolutely prohibited
+                        across our operations and supply chains.</p>
+                </article>
+                <article class="conduct__item reveal reveal-delay-4">
+                    <p class="conduct__num">05</p>
+                    <h3 class="conduct__title">Environmental Responsibility</h3>
+                    <p class="conduct__text">We conduct our operations — in Mining, Agriculture, Energy, and beyond — with
+                        full respect for Ghana's environmental laws and a genuine commitment to minimising our ecological
+                        footprint for future generations.</p>
+                </article>
+                <article class="conduct__item reveal reveal-delay-4">
+                    <p class="conduct__num">06</p>
+                    <h3 class="conduct__title">Use of Company Resources</h3>
+                    <p class="conduct__text">Company assets, systems, and funds are used solely for legitimate business
+                        purposes. We safeguard the resources entrusted to us and maintain robust cybersecurity practices at
+                        all times.</p>
+                </article>
+                <article class="conduct__item reveal reveal-delay-4">
+                    <p class="conduct__num">07</p>
+                    <h3 class="conduct__title">Speak Up — Whistleblower Protection</h3>
+                    <p class="conduct__text">We encourage every person to report genuine concerns without fear. Eliud
+                        Holdings guarantees protection from retaliation for good-faith reporting, consistent with Ghana's
+                        Whistleblower Act, 2006 (Act 720). Reports may be made confidentially via our Ethics Hotline.</p>
+                </article>
+            </div>
+            <p class="conduct__quote reveal">"We hold ourselves to the highest standard — not because the law demands it,
+                but because the communities we serve, the employees we lead, and the investors who trust us deserve
+                nothing less."</p>
+        </div>
+    </section>
+
     <!-- Board Member Modal -->
     <div class="modal-overlay" id="boardModal">
         <div class="modal-content">
@@ -275,24 +352,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Philosophy -->
-    <section class="section philosophy" id="philosophy">
-        <div class="container">
-            <div class="philosophy__content reveal">
-                <p class="section__label">Philosophy</p>
-                <p class="philosophy__quote">"Our company exists to create value with integrity, purpose, and care. We
-                    believe success is not measured only by profit, but by the positive impact we have on our customers,
-                    our team, and our community."</p>
-                <div class="philosophy__line"></div>
-                <div class="philosophy__values">
-                    <span class="philosophy__value">Discipline</span>
-                    <span class="philosophy__value">Authority</span>
-                    <span class="philosophy__value">Legacy</span>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Timeline -->
     <section class="section" id="timeline">
@@ -379,11 +438,11 @@
                     <div class="contact__details">
                         <div class="contact__detail">
                             <span class="contact__detail-label">Email</span>
-                            <a href="mailto:contact@eleodholdings.com">contact@eleodholdings.com</a>
+                            <a href="mailto:contact@eliudholdings.com">contact@eliudholdings.com</a>
                         </div>
                         <div class="contact__detail">
                             <span class="contact__detail-label">Investor Relations</span>
-                            <a href="mailto:ir@eleodholdings.com">ir@eleodholdings.com</a>
+                            <a href="mailto:ir@eliudholdings.com">ir@eliudholdings.com</a>
                         </div>
                     </div>
                 </div>
@@ -424,7 +483,7 @@
             <div class="footer__links">
                 <a href="#">Privacy</a>
                 <a href="#">Terms</a>
-                <a href="mailto:contact@eleodholdings.com">Contact</a>
+                <a href="mailto:contact@eliudholdings.com">Contact</a>
             </div>
         </div>
     </footer>
