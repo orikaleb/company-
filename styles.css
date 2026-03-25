@@ -139,7 +139,7 @@ h4 {
   margin: 0;
   box-sizing: border-box;
   padding-left: max(
-    calc(var(--spacing-unit) * 2),
+    calc(var(--spacing-unit) * 12),
     env(safe-area-inset-left, 0px)
   );
   padding-right: max(
