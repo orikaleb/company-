@@ -39,6 +39,25 @@
 
     <!-- Hero -->
     <section class="hero">
+        <div class="hero__bg" aria-hidden="true">
+            <div class="hero__mesh"></div>
+            <div class="hero__orb hero__orb--1"></div>
+            <div class="hero__orb hero__orb--2"></div>
+            <div class="hero__orb hero__orb--3"></div>
+            <div class="hero__orb hero__orb--4"></div>
+            <div class="hero__grid hero__grid--primary"></div>
+            <div class="hero__grid hero__grid--secondary"></div>
+            <div class="hero__lines"></div>
+            <div class="hero__particles">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span>
+            </div>
+            <div class="hero__beam"></div>
+            <div class="hero__beam hero__beam--alt"></div>
+            <div class="hero__vignette"></div>
+            <div class="hero__noise"></div>
+        </div>
         <div class="container">
             <div class="hero__content">
                 <p class="hero__label">Private Holding Company</p>
@@ -71,29 +90,37 @@
         </div>
     </section>
 
-    <!-- Video Section -->
-    <section class="section video-section" id="video">
-        <div class="container">
-            <div class="video__header reveal">
-                <p class="section__label">Our Story</p>
-                <h2 class="section__title">Building for Permanence</h2>
-            </div>
-            <div class="video__wrapper reveal">
-                <div class="video__container">
-                    <!-- Replace the src with your actual video file or embed URL -->
-                    <video class="video__player" id="companyVideo" poster="" controls>
-                        <source src="company-video.mp4" type="video/mp4">
-                        <!-- Fallback for browsers that don't support video -->
-                        Your browser does not support the video tag.
-                    </video>
-                    <!-- Play button overlay -->
-                    <button class="video__play-btn" id="videoPlayBtn" aria-label="Play video">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <polygon points="5 3 19 12 5 21 5 3" />
-                        </svg>
-                    </button>
+    <!-- Video Section (full-page) -->
+    <section class="video-section" id="video">
+        <div class="video__stage">
+            <div id="youtubePlayer" class="video__youtube" data-video-id="qk_JTSOSwcs"
+                title="Eliud Holdings — Our Story"></div>
+            <button type="button" class="video__play-btn hidden" id="videoPlayBtn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+            </button>
+            <div class="video__overlay">
+                <div class="video__overlay-content reveal">
+                    <p class="section__label">Our Story</p>
+                    <h2 class="section__title">Building for Permanence</h2>
+                    <p class="video__caption">Discover the vision behind Eliud Holdings</p>
                 </div>
-                <p class="video__caption">Discover the vision behind Eliud Holdings</p>
+            </div>
+            <div class="video__controls">
+                <button type="button" class="video__mute-btn is-muted" id="videoMuteBtn" aria-label="Unmute video"
+                    aria-pressed="true">
+                    <svg class="video__mute-icon video__mute-icon--muted" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <path d="M11 5L6 9H3v6h3l5 4V5z" />
+                        <path d="M15.5 8.5a5 5 0 0 1 0 7M17.5 6.5a8 8 0 0 1 0 11" />
+                    </svg>
+                    <svg class="video__mute-icon video__mute-icon--unmuted" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <path d="M11 5L6 9H3v6h3l5 4V5z" />
+                        <path d="M23 9l-6 6M17 9l6 6" />
+                    </svg>
+                </button>
             </div>
         </div>
     </section>
@@ -244,46 +271,46 @@
             </div>
             <div class="board__grid">
                 <div class="board__member reveal"
-                    data-full-bio="James Doe serves as Chairman of the Board, bringing over 25 years of distinguished leadership in private equity and corporate governance. Previously a Managing Director at a leading global investment firm, James has overseen more than $5 billion in transaction value across technology, industrial, and consumer sectors. His strategic vision focuses on long-term value creation through disciplined capital allocation and operational excellence. James holds an MBA from Harvard Business School and serves on the boards of several philanthropic organizations dedicated to education and economic development.">
-                    <div class="board__photo">caleb</div>
+                    data-full-bio="Caleb Asirifi Otchere serves as Chairman of the Board, providing strategic leadership across Eliud Holdings and its portfolio. He brings extensive experience in corporate governance, capital allocation, and long-term value creation. Caleb guides group strategy and oversees board governance with a focus on disciplined growth and enduring enterprise value.">
+                    <div class="board__photo">CA</div>
                     <h3 class="board__name">Caleb Asirifi Otchere</h3>
                     <p class="board__role">Chairman</p>
-                    <p class="board__bio">.</p>
+                    <p class="board__bio">Strategic leader guiding group vision, governance, and long-term value creation.</p>
                 </div>
                 <div class="board__member reveal reveal-delay-1"
                     data-full-bio="Sarah Edwards is a seasoned financial executive with a track record of driving fiscal efficiency and strategic growth. Formerly the CFO of a Fortune 500 manufacturing company, she brings rigorous expertise in capital structure optimization, risk management, and M&A integration. Sarah plays a key role in the Board's audit and compensation committees. Her approach combines data-driven discipline with a pragmatic understanding of operational realities. She is a Certified Public Accountant and holds a degree in Finance from the Wharton School.">
                     <div class="board__photo">SE</div>
                     <h3 class="board__name">Sarah Edwards</h3>
                     <p class="board__role">Director</p>
-                    <p class="board__bio">.</p>
+                    <p class="board__bio">Former Fortune 500 CFO focused on capital strategy, risk, and financial discipline.</p>
                 </div>
                 <div class="board__member reveal reveal-delay-2"
                     data-full-bio="Michael Kwan is a serial entrepreneur and investor who has founded and exited three technology companies in the SaaS and fintech spaces. His insight into digital transformation and innovation helps guide Eliud's portfolio companies in modernizing their operations. Michael brings a forward-looking perspective on market disruptions and technological opportunities. He is an active angel investor and mentor to early-stage founders, with a passion for fostering the next generation of business leaders.">
                     <div class="board__photo">MK</div>
                     <h3 class="board__name">Michael Kwan</h3>
                     <p class="board__role">Director</p>
-                    <p class="board__bio">.</p>
+                    <p class="board__bio">Serial tech entrepreneur advising on innovation, digital growth, and transformation.</p>
                 </div>
                 <div class="board__member reveal reveal-delay-3"
                     data-full-bio="Edwin Akoto is the Creative Director of Eliud Holdings, with two decades of experience shaping brand identity, visual strategy, and creative direction across diverse industries. He has led multidisciplinary teams delivering high-impact creative work in emerging markets and established enterprises. Edwin's expertise lies in aligning design and storytelling with business objectives. He serves as a strategic advisor on brand, communications, and creative investment decisions for the group.">
                     <div class="board__photo">EA</div>
                     <h3 class="board__name">Edwin Akoto</h3>
                     <p class="board__role">Creative Director</p>
-                    <p class="board__bio">.</p>
+                    <p class="board__bio">Leads brand identity, creative strategy, and visual storytelling across the group.</p>
                 </div>
                 <div class="board__member reveal reveal-delay-4"
                     data-full-bio="Thomas Park is a turnaround specialist with deep operational experience in the transportation and logistics sectors. He served as CEO of a major logistics provider, where he successfully led a corporate restructuring that doubled profitability within three years. Thomas brings a hands-on approach to operational efficiency, supply chain optimization, and organizational leadership. He advises Eliud's industrial and transportation subsidiaries on performance improvement strategies.">
                     <div class="board__photo">TP</div>
                     <h3 class="board__name">Thomas Park</h3>
                     <p class="board__role">Director</p>
-                    <p class="board__bio">.</p>
+                    <p class="board__bio">Operations expert in logistics and transportation with a focus on performance.</p>
                 </div>
                 <div class="board__member reveal reveal-delay-4"
                     data-full-bio="Aisha Ndiaye brings deep expertise in global brand strategy and sustainable growth. As a former c-suite executive for a multinational consumer goods conglomerate, she led market entry strategies across Africa and Southeast Asia. Aisha is a champion of ESG initiatives, believing that responsible business practices drive superior long-term returns. She currently advises high-growth startups on scaling operations while maintaining brand integrity. Aisha holds a Master's in International Business and appears frequently as a thought leader on sustainable commerce.">
                     <div class="board__photo">AN</div>
                     <h3 class="board__name">Aisha Ndiaye</h3>
                     <p class="board__role">Director</p>
-                    <p class="board__bio">.</p>
+                    <p class="board__bio">Global brand executive championing sustainable growth and responsible business.</p>
                 </div>
             </div>
         </div>
@@ -294,62 +321,30 @@
         <div class="container">
             <p class="section__label reveal">Governance</p>
             <h2 class="section__title reveal">Our Code<br>of Conduct</h2>
-            <p class="conduct__lede reveal">The principles that guide how we work, lead, and serve — across every sector,
-                every subsidiary, and every community we touch.</p>
+            <p class="conduct__lede reveal">How we work, lead, and serve — across every subsidiary and community we touch.</p>
             <div class="conduct__intro">
-                <p class="reveal">At Eliud Holdings, we believe the way we do business matters as much as the results we
-                    achieve. This Code applies to every Director, employee, contractor, and partner who acts on our
-                    behalf.</p>
+                <p class="reveal">This Code applies to every Director, employee, contractor, and partner who acts on our behalf.</p>
             </div>
             <div class="conduct__grid">
                 <article class="conduct__item reveal">
                     <p class="conduct__num">01</p>
-                    <h3 class="conduct__title">Integrity &amp; Honest Dealing</h3>
-                    <p class="conduct__text">We act with honesty in every transaction and relationship. Bribery, corruption,
-                        and facilitation payments are strictly prohibited. We comply fully with Ghana's anti-corruption
-                        laws and applicable international standards.</p>
+                    <h3 class="conduct__title">Integrity</h3>
+                    <p class="conduct__text">Honest dealing, no corruption, and clear management of conflicts of interest.</p>
                 </article>
                 <article class="conduct__item reveal reveal-delay-1">
                     <p class="conduct__num">02</p>
-                    <h3 class="conduct__title">Conflicts of Interest</h3>
-                    <p class="conduct__text">We disclose and proactively manage any situation where personal interests may
-                        conflict with those of the Company. No one may use their position at Eliud Holdings for personal
-                        gain at the Company's expense.</p>
+                    <h3 class="conduct__title">People</h3>
+                    <p class="conduct__text">Equal opportunity, dignity at work, and zero tolerance for forced or child labour.</p>
                 </article>
                 <article class="conduct__item reveal reveal-delay-2">
                     <p class="conduct__num">03</p>
-                    <h3 class="conduct__title">Confidentiality &amp; Data Protection</h3>
-                    <p class="conduct__text">We protect sensitive business information and personal data in compliance
-                        with Ghana's Data Protection Act, 2012 (Act 843). Confidentiality obligations survive the end of any
-                        employment or engagement.</p>
+                    <h3 class="conduct__title">Stewardship</h3>
+                    <p class="conduct__text">Protect data and company assets; respect Ghana's environmental laws in all we do.</p>
                 </article>
                 <article class="conduct__item reveal reveal-delay-3">
                     <p class="conduct__num">04</p>
-                    <h3 class="conduct__title">Respect &amp; Human Dignity</h3>
-                    <p class="conduct__text">We are committed to equal opportunity and a workplace free from
-                        discrimination, harassment, and abuse. Child labour and forced labour are absolutely prohibited
-                        across our operations and supply chains.</p>
-                </article>
-                <article class="conduct__item reveal reveal-delay-4">
-                    <p class="conduct__num">05</p>
-                    <h3 class="conduct__title">Environmental Responsibility</h3>
-                    <p class="conduct__text">We conduct our operations — in Mining, Agriculture, Energy, and beyond — with
-                        full respect for Ghana's environmental laws and a genuine commitment to minimising our ecological
-                        footprint for future generations.</p>
-                </article>
-                <article class="conduct__item reveal reveal-delay-4">
-                    <p class="conduct__num">06</p>
-                    <h3 class="conduct__title">Use of Company Resources</h3>
-                    <p class="conduct__text">Company assets, systems, and funds are used solely for legitimate business
-                        purposes. We safeguard the resources entrusted to us and maintain robust cybersecurity practices at
-                        all times.</p>
-                </article>
-                <article class="conduct__item reveal reveal-delay-4">
-                    <p class="conduct__num">07</p>
-                    <h3 class="conduct__title">Speak Up — Whistleblower Protection</h3>
-                    <p class="conduct__text">We encourage every person to report genuine concerns without fear. Eliud
-                        Holdings guarantees protection from retaliation for good-faith reporting, consistent with Ghana's
-                        Whistleblower Act, 2006 (Act 720). Reports may be made confidentially via our Ethics Hotline.</p>
+                    <h3 class="conduct__title">Speak Up</h3>
+                    <p class="conduct__text">Report concerns in good faith without fear — confidentially via our Ethics Hotline.</p>
                 </article>
             </div>
             <p class="conduct__quote reveal">"We hold ourselves to the highest standard — not because the law demands it,
@@ -510,6 +505,7 @@
         </div>
     </footer>
 
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script src="script.js"></script>
 </body>
 

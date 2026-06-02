@@ -10,6 +10,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: true });
 
+    // Hero background parallax
+    const hero = document.querySelector('.hero');
+    const heroBg = document.querySelector('.hero__bg');
+
+    if (hero && heroBg) {
+        const updateHeroParallax = () => {
+            const rect = hero.getBoundingClientRect();
+            const viewHeight = window.innerHeight;
+
+            if (rect.bottom > 0 && rect.top < viewHeight) {
+                const progress = Math.min(1, Math.max(0, -rect.top / (rect.height * 0.85)));
+                heroBg.style.transform = `translate3d(0, ${progress * 48}px, 0)`;
+            }
+        };
+
+        window.addEventListener('scroll', updateHeroParallax, { passive: true });
+        updateHeroParallax();
+    }
+
     // Mobile navigation
     const menuToggle = document.getElementById('menuToggle');
     const nav = document.getElementById('nav');
@@ -54,27 +73,175 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Video player
-    const video = document.getElementById('companyVideo');
+    // Our Story — YouTube embed: autoplay in view, mute toggle, resume position
+    const youtubeMount = document.getElementById('youtubePlayer');
+    const videoSection = document.getElementById('video');
     const playBtn = document.getElementById('videoPlayBtn');
+    const muteBtn = document.getElementById('videoMuteBtn');
+    const VIDEO_TIME_KEY = 'eliudStoryVideoTime';
+    const VIDEO_MUTED_KEY = 'eliudStoryVideoMuted';
 
-    if (video && playBtn) {
-        playBtn.addEventListener('click', () => {
-            video.play();
-            playBtn.classList.add('hidden');
-        });
+    if (youtubeMount && videoSection) {
+        const videoId = youtubeMount.dataset.videoId || 'qk_JTSOSwcs';
+        let ytPlayer = null;
+        let ytReady = false;
+        let isSectionVisible = false;
+        let isUserMuted = true;
+        let timeSaveInterval = null;
 
-        video.addEventListener('pause', () => {
-            playBtn.classList.remove('hidden');
-        });
+        const saveVideoTime = () => {
+            if (!ytReady || typeof ytPlayer.getCurrentTime !== 'function') return;
+            const current = ytPlayer.getCurrentTime();
+            if (current > 0) {
+                sessionStorage.setItem(VIDEO_TIME_KEY, String(current));
+            }
+        };
 
-        video.addEventListener('ended', () => {
-            playBtn.classList.remove('hidden');
-        });
+        const restoreVideoTime = () => {
+            if (!ytReady) return;
+            const saved = parseFloat(sessionStorage.getItem(VIDEO_TIME_KEY) || '0');
+            if (saved > 0) {
+                ytPlayer.seekTo(saved, true);
+            }
+        };
 
-        video.addEventListener('play', () => {
-            playBtn.classList.add('hidden');
-        });
+        const updateMuteButton = () => {
+            if (!muteBtn) return;
+            muteBtn.classList.toggle('is-muted', isUserMuted);
+            muteBtn.setAttribute('aria-label', isUserMuted ? 'Unmute video' : 'Mute video');
+            muteBtn.setAttribute('aria-pressed', String(isUserMuted));
+        };
+
+        const applyMutedState = (isMuted) => {
+            isUserMuted = isMuted;
+            if (ytReady) {
+                if (isMuted) {
+                    ytPlayer.mute();
+                } else {
+                    ytPlayer.unMute();
+                }
+            }
+            updateMuteButton();
+        };
+
+        const loadMutedPreference = () => {
+            const stored = sessionStorage.getItem(VIDEO_MUTED_KEY);
+            const isMuted = stored === null ? true : stored === 'true';
+            applyMutedState(isMuted);
+        };
+
+        const tryPlay = () => {
+            if (!ytReady) return;
+            ytPlayer.playVideo();
+            if (playBtn) playBtn.classList.add('hidden');
+        };
+
+        const pauseVideo = () => {
+            if (!ytReady) return;
+            saveVideoTime();
+            ytPlayer.pauseVideo();
+        };
+
+        const startTimeSaving = () => {
+            if (timeSaveInterval) return;
+            timeSaveInterval = window.setInterval(() => {
+                if (isSectionVisible) saveVideoTime();
+            }, 1500);
+        };
+
+        const stopTimeSaving = () => {
+            if (timeSaveInterval) {
+                clearInterval(timeSaveInterval);
+                timeSaveInterval = null;
+            }
+        };
+
+        const onSectionVisible = () => {
+            restoreVideoTime();
+            applyMutedState(isUserMuted);
+            tryPlay();
+            startTimeSaving();
+        };
+
+        const onSectionHidden = () => {
+            stopTimeSaving();
+            pauseVideo();
+        };
+
+        const initYouTubePlayer = () => {
+            ytPlayer = new YT.Player('youtubePlayer', {
+                videoId,
+                width: '100%',
+                height: '100%',
+                playerVars: {
+                    autoplay: 0,
+                    controls: 0,
+                    modestbranding: 1,
+                    rel: 0,
+                    playsinline: 1,
+                    enablejsapi: 1,
+                    fs: 0,
+                    iv_load_policy: 3
+                },
+                events: {
+                    onReady: () => {
+                        ytReady = true;
+                        loadMutedPreference();
+                        if (isSectionVisible) {
+                            onSectionVisible();
+                        }
+                    },
+                    onStateChange: (event) => {
+                        if (!playBtn) return;
+                        if (event.data === YT.PlayerState.PLAYING) {
+                            playBtn.classList.add('hidden');
+                        } else if (
+                            event.data === YT.PlayerState.PAUSED &&
+                            !isSectionVisible
+                        ) {
+                            playBtn.classList.add('hidden');
+                        }
+                    }
+                }
+            });
+        };
+
+        if (muteBtn) {
+            muteBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const nextMuted = !isUserMuted;
+                sessionStorage.setItem(VIDEO_MUTED_KEY, String(nextMuted));
+                applyMutedState(nextMuted);
+            });
+        }
+
+        if (playBtn) {
+            playBtn.addEventListener('click', () => {
+                restoreVideoTime();
+                tryPlay();
+            });
+        }
+
+        window.addEventListener('pagehide', saveVideoTime);
+
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                isSectionVisible = entry.isIntersecting;
+                if (entry.isIntersecting) {
+                    onSectionVisible();
+                } else {
+                    onSectionHidden();
+                }
+            });
+        }, { threshold: 0.35 });
+
+        videoObserver.observe(videoSection);
+
+        if (window.YT && window.YT.Player) {
+            initYouTubePlayer();
+        } else {
+            window.onYouTubeIframeAPIReady = initYouTubePlayer;
+        }
     }
 
     // Contact form
