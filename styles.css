@@ -279,6 +279,7 @@ body {
   color: var(--light-grey);
   background: var(--black);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -455,7 +456,7 @@ h4 {
     rgba(160, 140, 91, 0.06) 340deg,
     transparent 360deg
   );
-  animation: heroMeshRotate 26s linear infinite;
+  animation: heroMeshRotate 55s linear infinite;
   opacity: 0.9;
 }
 
@@ -472,7 +473,7 @@ h4 {
   top: -15%;
   right: -10%;
   background: radial-gradient(circle, rgba(160, 140, 91, 0.5) 0%, transparent 68%);
-  animation: heroOrbDrift1 11s ease-in-out infinite;
+  animation: heroOrbDrift1 24s ease-in-out infinite;
 }
 
 .hero__orb--2 {
@@ -481,7 +482,7 @@ h4 {
   bottom: 0;
   left: -12%;
   background: radial-gradient(circle, rgba(197, 179, 131, 0.32) 0%, transparent 70%);
-  animation: heroOrbDrift2 14s ease-in-out infinite;
+  animation: heroOrbDrift2 30s ease-in-out infinite;
 }
 
 .hero__orb--3 {
@@ -490,7 +491,7 @@ h4 {
   top: 38%;
   left: 52%;
   background: radial-gradient(circle, rgba(160, 140, 91, 0.28) 0%, transparent 65%);
-  animation: heroOrbDrift3 9s ease-in-out infinite;
+  animation: heroOrbDrift3 20s ease-in-out infinite;
 }
 
 .hero__orb--4 {
@@ -499,7 +500,7 @@ h4 {
   top: 18%;
   left: 8%;
   background: radial-gradient(circle, rgba(197, 179, 131, 0.2) 0%, transparent 70%);
-  animation: heroOrbDrift4 13s ease-in-out infinite;
+  animation: heroOrbDrift4 28s ease-in-out infinite;
 }
 
 .hero__grid {
@@ -513,7 +514,7 @@ h4 {
     linear-gradient(rgba(160, 140, 91, 0.07) 1px, transparent 1px),
     linear-gradient(90deg, rgba(160, 140, 91, 0.07) 1px, transparent 1px);
   background-size: 56px 56px;
-  animation: heroGridShift 14s linear infinite;
+  animation: heroGridShift 30s linear infinite;
 }
 
 .hero__grid--secondary {
@@ -522,7 +523,7 @@ h4 {
     linear-gradient(90deg, rgba(197, 179, 131, 0.04) 1px, transparent 1px);
   background-size: 28px 28px;
   opacity: 0.7;
-  animation: heroGridShiftReverse 10s linear infinite;
+  animation: heroGridShiftReverse 22s linear infinite;
 }
 
 .hero__lines {
@@ -547,7 +548,7 @@ h4 {
     transparent
   );
   transform-origin: center;
-  animation: heroLinePulse 5s ease-in-out infinite;
+  animation: heroLinePulse 11s ease-in-out infinite;
 }
 
 .hero__lines::before {
@@ -560,7 +561,7 @@ h4 {
   top: 62%;
   --line-rotate: rotate(5deg);
   transform: var(--line-rotate);
-  animation-delay: -2.5s;
+  animation-delay: -5.5s;
   opacity: 0.6;
 }
 
@@ -576,22 +577,22 @@ h4 {
   border-radius: 50%;
   background: var(--gold-light);
   animation:
-    heroParticleFloat 5s ease-in-out infinite,
-    heroParticleTwinkle 2.5s ease-in-out infinite;
+    heroParticleFloat 11s ease-in-out infinite,
+    heroParticleTwinkle 4.5s ease-in-out infinite;
 }
 
-.hero__particles span:nth-child(1) { top: 18%; left: 12%; animation-duration: 5s, 2.5s; }
-.hero__particles span:nth-child(2) { top: 32%; left: 78%; animation-duration: 6.2s, 3.2s; animation-delay: -1s, -0.5s; }
-.hero__particles span:nth-child(3) { top: 55%; left: 45%; animation-duration: 5.5s, 2.8s; animation-delay: -2s, -1s; }
-.hero__particles span:nth-child(4) { top: 72%; left: 22%; animation-duration: 6.8s, 3.5s; animation-delay: -3s, -1.5s; }
-.hero__particles span:nth-child(5) { top: 12%; left: 58%; animation-duration: 4.5s, 2.2s; animation-delay: -0.5s, -2s; }
-.hero__particles span:nth-child(6) { top: 48%; left: 88%; animation-duration: 7.2s, 4s; animation-delay: -4s, -0.8s; }
-.hero__particles span:nth-child(7) { top: 68%; left: 65%; animation-duration: 5.2s, 2.6s; animation-delay: -2.5s, -2.2s; }
-.hero__particles span:nth-child(8) { top: 38%; left: 28%; animation-duration: 6.5s, 3.8s; animation-delay: -1.5s, -1.2s; }
-.hero__particles span:nth-child(9) { top: 82%; left: 48%; animation-duration: 5.8s, 3s; animation-delay: -3.5s, -2.8s; }
-.hero__particles span:nth-child(10) { top: 24%; left: 92%; animation-duration: 7s, 2.4s; animation-delay: -5s, -0.3s; }
-.hero__particles span:nth-child(11) { top: 58%; left: 8%; width: 2px; height: 2px; animation-duration: 8s, 4.2s; }
-.hero__particles span:nth-child(12) { top: 44%; left: 62%; width: 4px; height: 4px; animation-duration: 4.2s, 2s; animation-delay: -2.8s, -1.8s; }
+.hero__particles span:nth-child(1) { top: 18%; left: 12%; animation-duration: 11s, 4.5s; }
+.hero__particles span:nth-child(2) { top: 32%; left: 78%; animation-duration: 13s, 5.5s; animation-delay: -2s, -1s; }
+.hero__particles span:nth-child(3) { top: 55%; left: 45%; animation-duration: 12s, 5s; animation-delay: -4s, -2s; }
+.hero__particles span:nth-child(4) { top: 72%; left: 22%; animation-duration: 14s, 6s; animation-delay: -6s, -3s; }
+.hero__particles span:nth-child(5) { top: 12%; left: 58%; animation-duration: 10s, 4s; animation-delay: -1s, -4s; }
+.hero__particles span:nth-child(6) { top: 48%; left: 88%; animation-duration: 15s, 7s; animation-delay: -8s, -1.5s; }
+.hero__particles span:nth-child(7) { top: 68%; left: 65%; animation-duration: 11.5s, 4.6s; animation-delay: -5s, -4.2s; }
+.hero__particles span:nth-child(8) { top: 38%; left: 28%; animation-duration: 13.5s, 6.5s; animation-delay: -3s, -2.4s; }
+.hero__particles span:nth-child(9) { top: 82%; left: 48%; animation-duration: 12.5s, 5.2s; animation-delay: -7s, -5.6s; }
+.hero__particles span:nth-child(10) { top: 24%; left: 92%; animation-duration: 15s, 4.2s; animation-delay: -10s, -0.6s; }
+.hero__particles span:nth-child(11) { top: 58%; left: 8%; width: 2px; height: 2px; animation-duration: 17s, 7.2s; }
+.hero__particles span:nth-child(12) { top: 44%; left: 62%; width: 4px; height: 4px; animation-duration: 9.5s, 3.5s; animation-delay: -5.6s, -3.6s; }
 
 .hero__beam {
   position: absolute;
@@ -607,7 +608,7 @@ h4 {
     rgba(160, 140, 91, 0.03) 60%,
     transparent 100%
   );
-  animation: heroBeamSweep 9s ease-in-out infinite;
+  animation: heroBeamSweep 20s ease-in-out infinite;
 }
 
 .hero__beam--alt {
@@ -623,7 +624,7 @@ h4 {
     rgba(160, 140, 91, 0.1) 55%,
     transparent
   );
-  animation: heroBeamSweepAlt 12s ease-in-out infinite;
+  animation: heroBeamSweepAlt 26s ease-in-out infinite;
 }
 
 .hero__vignette {
@@ -1594,11 +1595,31 @@ h4 {
   /* Hero */
   .hero {
     padding: calc(var(--spacing-unit) * 10) 0 calc(var(--spacing-unit) * 8) 0;
-    min-height: 80vh;
+    min-height: 88vh;
+  }
+
+  .hero .container {
+    padding-left: max(calc(var(--spacing-unit) * 2), env(safe-area-inset-left, 0px));
+    padding-right: max(calc(var(--spacing-unit) * 2), env(safe-area-inset-right, 0px));
+  }
+
+  .hero__content {
+    margin-left: 0;
   }
 
   .hero__title {
     font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+
+  /* Lighten heavy background effects for mobile performance */
+  .hero__mesh,
+  .hero__noise,
+  .hero__orb--4 {
+    display: none;
+  }
+
+  .hero__orb {
+    filter: blur(60px);
   }
 
   /* About Section */
@@ -1835,6 +1856,8 @@ h4 {
   border: 1px solid var(--dark-grey);
   width: 100%;
   max-width: 600px;
+  max-height: 85vh;
+  overflow-y: auto;
   padding: calc(var(--spacing-unit) * 6);
   position: relative;
   transform: translateY(20px) scale(0.95);
@@ -1919,6 +1942,12 @@ h4 {
   .modal-header {
     flex-direction: column;
     text-align: center;
+  }
+
+  .modal-photo {
+    width: 96px;
+    height: 96px;
+    font-size: 1.85rem;
   }
 }
 
