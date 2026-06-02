@@ -17,7 +17,7 @@
     <header class="header" id="header">
         <div class="header__inner">
             <a href="#" class="logo" aria-label="Eliud Holdings">
-                <img class="logo__mark" src="assets/logo.png" alt="" width="40" height="40">
+                <img class="logo__mark" src="assets/logo.png" alt="Eliud Holdings" width="22" height="28">
                 <span class="logo__text">Eliud</span>
             </a>
             <nav class="nav" id="nav">
@@ -353,6 +353,15 @@
         </div>
     </section>
 
+    <!-- Legal Modal (Privacy / Terms) -->
+    <div class="modal-overlay" id="legalModal" aria-hidden="true">
+        <div class="modal-content modal-content--legal" role="dialog" aria-modal="true" aria-labelledby="legalModalTitle">
+            <button type="button" class="modal-close" id="legalModalClose" aria-label="Close">&times;</button>
+            <h2 class="legal-modal__title" id="legalModalTitle"></h2>
+            <div class="modal-body legal-modal__body" id="legalModalBody"></div>
+        </div>
+    </div>
+
     <!-- Board Member Modal -->
     <div class="modal-overlay" id="boardModal">
         <div class="modal-content">
@@ -497,11 +506,11 @@
         <div class="container footer__inner">
             <p class="footer__logo">Eliud Holdings</p>
             <p class="footer__copy">© 2026 Eliud Holdings. All rights reserved.</p>
-            <div class="footer__links">
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
-                <a href="mailto:contact@eliudholdings.com">Contact</a>
-            </div>
+            <nav class="footer__links" aria-label="Legal and contact">
+                <button type="button" class="footer__link" data-legal="privacy">Privacy</button>
+                <button type="button" class="footer__link" data-legal="terms">Terms</button>
+                <a href="#contact" class="footer__link">Contact</a>
+            </nav>
         </div>
     </footer>
 

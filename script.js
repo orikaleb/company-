@@ -316,11 +316,106 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Close on Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
-                closeModal();
+    }
+
+    // Legal modal (Privacy / Terms)
+    const legalContent = {
+        privacy: {
+            title: 'Privacy Policy',
+            html: `
+                <p class="legal-modal__updated">Last updated: June 1, 2026</p>
+                <p>Eliud Holdings ("we," "us," or "our") respects your privacy. This policy describes how we collect, use, and protect information when you visit our website or contact us.</p>
+                <h3>Information we collect</h3>
+                <p>We may collect information you voluntarily provide through our contact form (such as your name, email address, subject, and message) and technical data such as browser type, device information, and general usage patterns through standard server logs.</p>
+                <h3>How we use information</h3>
+                <ul>
+                    <li>To respond to inquiries and communicate with you</li>
+                    <li>To operate, maintain, and improve our website</li>
+                    <li>To comply with applicable legal obligations</li>
+                </ul>
+                <h3>Sharing</h3>
+                <p>We do not sell your personal information. We may share data with trusted service providers who assist in operating our website, subject to confidentiality obligations, or when required by law.</p>
+                <h3>Security & retention</h3>
+                <p>We use reasonable administrative and technical measures to protect information. We retain data only as long as needed for the purposes described in this policy.</p>
+                <h3>Your rights</h3>
+                <p>Depending on your location, you may have rights to access, correct, or delete personal information we hold about you. Contact us at <a href="mailto:contact@eliudholdings.com">contact@eliudholdings.com</a> to make a request.</p>
+                <h3>Changes</h3>
+                <p>We may update this policy from time to time. Continued use of the site after changes constitutes acceptance of the revised policy.</p>
+            `
+        },
+        terms: {
+            title: 'Terms of Use',
+            html: `
+                <p class="legal-modal__updated">Last updated: June 1, 2026</p>
+                <p>By accessing this website, you agree to these Terms of Use. If you do not agree, please do not use the site.</p>
+                <h3>Use of the site</h3>
+                <p>This website is provided for general information about Eliud Holdings. Content is for informational purposes only and does not constitute an offer, solicitation, or investment advice.</p>
+                <h3>Intellectual property</h3>
+                <p>All text, graphics, logos, and other materials on this site are owned by or licensed to Eliud Holdings and may not be copied, modified, or distributed without prior written permission.</p>
+                <h3>Disclaimer</h3>
+                <p>We strive for accuracy but make no warranties that content is complete, current, or error-free. Use of the site is at your own risk.</p>
+                <h3>Limitation of liability</h3>
+                <p>To the fullest extent permitted by law, Eliud Holdings shall not be liable for any indirect, incidental, or consequential damages arising from your use of this website.</p>
+                <h3>Links</h3>
+                <p>Our site may link to third-party websites. We are not responsible for their content or privacy practices.</p>
+                <h3>Governing law</h3>
+                <p>These terms are governed by applicable laws in the jurisdiction where Eliud Holdings operates, without regard to conflict-of-law principles.</p>
+                <h3>Contact</h3>
+                <p>Questions about these terms: <a href="mailto:contact@eliudholdings.com">contact@eliudholdings.com</a></p>
+            `
+        }
+    };
+
+    const legalModal = document.getElementById('legalModal');
+    const legalModalClose = document.getElementById('legalModalClose');
+    const legalModalTitle = document.getElementById('legalModalTitle');
+    const legalModalBody = document.getElementById('legalModalBody');
+    const legalTriggers = document.querySelectorAll('[data-legal]');
+
+    const openLegalModal = (key) => {
+        const content = legalContent[key];
+        if (!content || !legalModal) return;
+
+        legalModalTitle.textContent = content.title;
+        legalModalBody.innerHTML = content.html;
+        legalModal.classList.add('active');
+        legalModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        legalModalClose?.focus();
+    };
+
+    const closeLegalModal = () => {
+        if (!legalModal) return;
+        legalModal.classList.remove('active');
+        legalModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    };
+
+    if (legalModal && legalTriggers.length > 0) {
+        legalTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                openLegalModal(trigger.getAttribute('data-legal'));
+            });
+        });
+
+        legalModalClose?.addEventListener('click', closeLegalModal);
+
+        legalModal.addEventListener('click', (e) => {
+            if (e.target === legalModal) {
+                closeLegalModal();
             }
         });
     }
+
+    // Close modals on Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Escape') return;
+        if (modal && modal.classList.contains('active')) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        if (legalModal && legalModal.classList.contains('active')) {
+            closeLegalModal();
+        }
+    });
 });
