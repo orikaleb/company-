@@ -282,6 +282,10 @@ body {
   overflow-x: hidden;
 }
 
+body.menu-open {
+  overflow: hidden;
+}
+
 ::selection {
   background: var(--gold);
   color: var(--black);
@@ -329,9 +333,19 @@ h4 {
 }
 
 .header.scrolled {
+  padding: calc(var(--spacing-unit) * 2) 0;
+}
+
+/* Frosted bar drawn on a pseudo-element so the header itself never becomes a
+   containing block for the fixed nav overlay (which would clip the mobile menu
+   to the header once scrolled). */
+.header.scrolled::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background: rgba(12, 12, 12, 0.95);
   backdrop-filter: blur(10px);
-  padding: calc(var(--spacing-unit) * 2) 0;
+  z-index: -1;
 }
 
 /* Full-width bar: logo flush left; nav flush right (safe-area on notched devices) */
@@ -408,15 +422,30 @@ h4 {
   border: none;
   cursor: pointer;
   padding: 10px;
+  position: relative;
+  z-index: 101;
 }
 
 .menu-toggle span {
   display: block;
   width: 24px;
-  height: 1px;
+  height: 2px;
   background: var(--off-white);
-  margin: 6px 0;
-  transition: 0.2s;
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* ===================================
@@ -1120,17 +1149,17 @@ h4 {
 }
 
 .board__photo {
-  width: 96px;
-  height: 96px;
+  width: 116px;
+  height: 116px;
   background: var(--dark-grey);
-  border-radius: 50%;
+  border-radius: 6px;
   margin-bottom: calc(var(--spacing-unit) * 2.5);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--grey);
   font-family: var(--font-heading);
-  font-size: 1.85rem;
+  font-size: 2.1rem;
 }
 
 .board__name {
@@ -1570,31 +1599,36 @@ h4 {
   }
 }
 
-/* Small tablet and below - 768px */
-@media (max-width: 768px) {
-  .container {
-    padding: 0 calc(var(--spacing-unit) * 2);
+/* Tablet and below - use the overlay menu before the inline nav wraps */
+@media (max-width: 1024px) {
+  .header__inner {
+    justify-content: space-between;
+    padding-left: max(
+      calc(var(--spacing-unit) * 3),
+      env(safe-area-inset-left, 0px)
+    );
+    padding-right: max(
+      calc(var(--spacing-unit) * 3),
+      env(safe-area-inset-right, 0px)
+    );
   }
 
-  /* Header & Navigation */
   .menu-toggle {
     display: block;
-    z-index: 101;
   }
 
   .nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     flex: none;
-    justify-content: center;
-    background: rgba(12, 12, 12, 0.98);
-    backdrop-filter: blur(10px);
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: calc(var(--spacing-unit) * 4);
+    padding: calc(var(--spacing-unit) * 12) calc(var(--spacing-unit) * 4);
+    background: var(--black);
+    backdrop-filter: blur(10px);
+    overflow-y: auto;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
@@ -1607,8 +1641,15 @@ h4 {
   }
 
   .nav a {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     color: var(--off-white);
+  }
+}
+
+/* Small tablet and below - 768px */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 calc(var(--spacing-unit) * 2);
   }
 
   /* Hero */
@@ -1921,15 +1962,15 @@ h4 {
 }
 
 .modal-photo {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   background: var(--dark-grey);
-  border-radius: 50%;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-heading);
-  font-size: 2.25rem;
+  font-size: 2.6rem;
   color: var(--grey);
   flex-shrink: 0;
 }
@@ -2022,9 +2063,9 @@ h4 {
   }
 
   .modal-photo {
-    width: 96px;
-    height: 96px;
-    font-size: 1.85rem;
+    width: 112px;
+    height: 112px;
+    font-size: 2.1rem;
   }
 }
 

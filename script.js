@@ -33,15 +33,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('menuToggle');
     const nav = document.getElementById('nav');
 
+    const setMenu = (open) => {
+        nav.classList.toggle('active', open);
+        menuToggle.classList.toggle('active', open);
+        menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        document.body.classList.toggle('menu-open', open);
+    };
+
     menuToggle.addEventListener('click', () => {
-        nav.classList.toggle('active');
+        setMenu(!nav.classList.contains('active'));
     });
 
     // Close nav on link click
     nav.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-            nav.classList.remove('active');
+            setMenu(false);
         });
+    });
+
+    // Close nav on Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.classList.contains('active')) {
+            setMenu(false);
+        }
     });
 
     // Scroll reveal
